@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital@1&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+} /*box-sizing causes the padding to be added to the total width instead of increasing the width*/
+
+:root{
+	--myfont: 'Mulish', sans-serif;
+	--my-btn-font: 'Montserrat', sans-serif;
+	--linear-grad-light: linear-gradient(to left, rgba(116,235,213,0.6), rgb(116,235,213));
+	--linear-grad-color: linear-gradient(to left, rgb(116, 235, 213), rgb(159, 172, 230));
+}
+
+body{
+	background-image: var(--linear-grad-light), url("../images/images.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	font-family: var(--myfont);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;  /*100% of the browser. make the page at least as high as the browser viewport (and then grow it if the content exceed's the viewport height)*/
+	width: 100vw;
+}
+
+.container{
+	background-color: rgb(255, 255, 255);
+	border-radius: 10px; /*the curveness in the corner of the border*/
+	-webkit-border-radius: 10px; 
+	box-shadow: 0 2.8px 2.2px rgba(0,0,0,0.034), 0 6.7px 5.3px rgba(0,0,0,0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
+	overflow: hidden; /*what would happen if the content overflows*/
+	width: cal(100vw - 65vw);
+	max-width: 100%;
+}
+
+.header{
+	background: var(--linear-grad-color);
+	padding: 30px 0; 
+}
+
+.header h2{
+	color: rgb(34, 34, 34);
+	font-family: var(--my-btn-font);
+	font-size: 24px;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.form{
+	padding: 40px;
+}
+
+.form-control{
+	margin-bottom: 30px;
+	position: relative; /*positions the divs relative to the normal position*/
+}
+
+.form-control label{
+	display: inline-block;
+	margin-bottom: 5px; 
+}
+
+.form-control input{
+	width: 100%; /*take up 100% of the form-control div, goes to a new line if needed*/	
+	border: 2px solid rgb(240, 240, 240);
+	border-radius: 5px;
+	/*display: block;*/
+	font-family: var(--myfont);
+	font-size: 14px;
+	padding: 12px;
+}
+
+.form-control input:focus{
+	outline: 0;
+	border-color: rgb(119, 119, 119);
+}
+
+.form-control.success input{ /*success is dynamically added class in js, when the input is valid*/
+	border-color: rgb(46, 204, 112);
+}
+
+.form-control.error input{
+	border-color: rgb(231, 77, 60);
+}
+
+.form-control i{
+	position: absolute; /*positioned relative to the nearest positioned ancestor*/
+	right: 12px; /*since position is absolute, positions the right edge of the symobol 8% to the right of the parent form-control elem*/
+	top: 38px; /*these two moves the symbol relative to the form-control div which is its parent*/
+	visibility: hidden;
+}
+
+.form-control.success i.fa-check-circle{
+	color: 	rgb(46, 204, 112);
+	visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle{
+	color: 	rgb(231, 77, 60);
+	visibility: visible;
+}
+
+.form-control small{
+	color: 	rgb(231, 77, 60);
+	position: absolute;
+	left: 0px; /*moves the error msg to the left of the form-control div*/
+	visibility: hidden;
+}
+
+.form-control.error small{
+	visibility: visible;
+}
+
+.form .btn{
+	background: var(--linear-grad-color);
+	border-radius: 6px;
+	border: none;
+	outline: none;
+	color: rgb(255,255,255);
+	display: block; /*makes the submit button a block elem that takes up the whole width and starts at new line*/
+	font-family: var(--my-btn-font);
+	font-size: 16px;
+	padding: 15px 0;
+	margin-top: 20px;
+	width: 100%;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: all 1s ease;
+}
+
+.form .btn:hover{
+	background: linear-gradient(to right, rgb(116, 235, 213), rgb(159, 172, 230));
+}
+
+@media(max-width:998px){ /*wwhen the viewpport size is less the 998px like in mobiles and tabs, change the width of the container*/
+	.container{
+		width: calc(100vw-35vw);
+		max-width: 100%; /*when the content of the container increases the size of rhe container should not go beyond 100%*/
+	}
+}
